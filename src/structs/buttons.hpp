@@ -21,7 +21,7 @@ enum class Key
     LShift, RShift,
     LCtrl, RCtrl,
     LAlt, RAlt,
-    Space, Tab, Enter,
+    Space, Tab, Enter, Esc,
     Num0, Num1, Num2, Num3, Num4, Num5, Num6, Num7, Num8, Num9,
     NumDel, NumEnter, NumPlus, NumMinus, NumDiv, NumMul,
 
