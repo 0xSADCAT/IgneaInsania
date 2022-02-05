@@ -52,6 +52,8 @@ KeyEvent makeEvent(const SDL_KeyboardEvent& event)
     switch (event.keysym.sym)
     {
 
+    // TODO: key codes
+
     default:
         key = Key::Undefined;
         break;
@@ -70,8 +72,7 @@ int ApplicationEventsImpl::execute()
         return 1;
     }
 
-    static std::chrono::steady_clock::time_point time =
-            std::chrono::steady_clock::now();
+    static std::chrono::steady_clock::time_point time = std::chrono::steady_clock::now();
 
     _running = true;
     _code = 0;
@@ -108,13 +109,13 @@ int ApplicationEventsImpl::execute()
             default:
                 break;
             }
-
-            int mcs_e = std::chrono::duration_cast<std::chrono::microseconds>(
-                            std::chrono::steady_clock::now() - time)
-                        .count();
-            time = std::chrono::steady_clock::now();
-            iapp->tickEvent(mcs_e);
         }
+        
+        int mcs_e = std::chrono::duration_cast<std::chrono::microseconds>(
+                        std::chrono::steady_clock::now() - time)
+                    .count();
+        time = std::chrono::steady_clock::now();
+        iapp->tickEvent(mcs_e);
     }
 
     return _code;
