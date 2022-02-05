@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ostream>
 #include "buttons.hpp"
 
 
@@ -68,3 +69,8 @@ private:
     const ButtonState _state;
 };
 
+
+std::ostream& operator<<(std::ostream& os, const MouseButtonEvent& event);
+std::ostream& operator<<(std::ostream& os, const MouseMoveEvent& event);
+std::ostream& operator<<(std::ostream& os, const MouseWheelEvent& event);
+std::ostream& operator<<(std::ostream& os, const KeyEvent& event);
