@@ -4,6 +4,14 @@
 #include <ostream>
 
 
+enum class Flip
+{
+    None,
+    Vertical,
+    Horizontal
+};
+
+
 class Point
 {
 public:
