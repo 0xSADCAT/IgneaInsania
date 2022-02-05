@@ -1,9 +1,11 @@
 #include "window_impl.hpp"
 
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_video.h>
+#include <cassert>
 #include <iostream>
 #include <SDL2/SDL.h>
+
+#include "../textures/texture_manager.hpp"
+
 
 namespace
 {
@@ -41,6 +43,8 @@ WindowImpl::WindowImpl(const std::string& title)
         std::exit(-1);
     }
 
+    _texture_manager = new TextureManager(_renderer);
+
     SDL_SetRenderDrawColor(_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
     SDL_RenderClear(_renderer);
     SDL_RenderPresent(_renderer);
@@ -66,4 +70,40 @@ void WindowImpl::clear()
 void WindowImpl::present()
 {
     SDL_RenderPresent(_renderer);
+}
+
+void WindowImpl::drawTexture(TextureId id, const Point& position, Flip flip, double rotation)
+{
+    SDL_Texture* texture = _texture_manager->get(id);
+
+    assert(texture != nullptr);
+
+    SDL_Rect rect;
+#error rect.w and rect.h ???
+    rect.x = static_cast<int>(position.x());
+    rect.y = static_cast<int>(position.y());
+
+    if (flip == Flip::None and rotation == 0.0)
+    {
+        SDL_RenderCopy(_renderer, texture, nullptr, &rect);
+    }
+    else
+    {
+        SDL_RendererFlip sdl_flip;
+        switch (flip)
+        {
+        case Flip::Horizontal:
+            sdl_flip = SDL_FLIP_HORIZONTAL;
+            break;
+
+        case Flip::Vertical:
+            sdl_flip = SDL_FLIP_VERTICAL;
+            break;
+
+        default:
+            sdl_flip = SDL_FLIP_NONE;
+            break;
+        }
+        SDL_RenderCopyEx(_renderer, texture, nullptr, &rect, rotation, nullptr, sdl_flip);
+    }
 }

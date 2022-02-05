@@ -3,6 +3,12 @@
 #include <string>
 #include <SDL2/SDL.h>
 
+#include "../structs/geometry.hpp"
+#include "../textures/texture_id.hpp"
+
+
+class TextureManager;
+
 
 class WindowImpl
 {
@@ -14,9 +20,12 @@ public:
 
     void present();
 
+    void drawTexture(TextureId id, const Point& position, Flip flip, double rotation);
+
 private:
     SDL_Window* _window = nullptr;
     SDL_Renderer* _renderer = nullptr;
+    TextureManager* _texture_manager;
 
     WindowImpl(WindowImpl&) = delete;
     WindowImpl(WindowImpl&&) = delete;

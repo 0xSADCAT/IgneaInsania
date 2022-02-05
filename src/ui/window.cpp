@@ -22,3 +22,8 @@ void Window::present()
     _impl->present();
 }
 
+void Window::drawTexture(TextureId id, const Point& position, Flip flip, double rotation)
+{
+    _impl->drawTexture(id, position, flip, rotation);
+}
+
