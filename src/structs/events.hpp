@@ -42,17 +42,14 @@ private:
 class MouseWheelEvent
 {
 public:
-    MouseWheelEvent(int x, int y, int delta);
+    MouseWheelEvent(int delta_x, int delta_y);
 
-    int x() const;
-    int y() const;
-
-    int delta() const;
+    int deltaX() const;
+    int deltaY() const;
 
 private:
-    const int _x;
-    const int _y;
-    const int _delta;
+    const int _delta_x;
+    const int _delta_y;
 };
 
 

@@ -42,23 +42,18 @@ int MouseMoveEvent::y() const
 }
 
 
-MouseWheelEvent::MouseWheelEvent(int x, int y, int delta)
-    : _x(x), _y(y), _delta(delta)
+MouseWheelEvent::MouseWheelEvent(int x, int y)
+    : _delta_x(x), _delta_y(y)
 {}
 
-int MouseWheelEvent::x() const
+int MouseWheelEvent::deltaX() const
 {
-    return _x;
+    return _delta_x;
 }
 
-int MouseWheelEvent::y() const
+int MouseWheelEvent::deltaY() const
 {
-    return _y;
-}
-
-int MouseWheelEvent::delta() const
-{
-    return _delta;
+    return _delta_y;
 }
 
 
@@ -112,8 +107,7 @@ std::ostream& operator<<(std::ostream& os, const MouseMoveEvent& event)
 
 std::ostream& operator<<(std::ostream& os, const MouseWheelEvent& event)
 {
-    os << "MouseWheelEvent<" << event.x() << ", " << event.y()
-       << ", delta = " << event.delta() << ">";
+    os << "MouseWheelEvent<" << event.deltaX() << ", " << event.deltaY() << ">";
     return os;
 }
 

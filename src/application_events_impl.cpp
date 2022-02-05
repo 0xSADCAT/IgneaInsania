@@ -42,7 +42,7 @@ MouseMoveEvent makeEvent(const SDL_MouseMotionEvent& event)
 
 MouseWheelEvent makeEvent(const SDL_MouseWheelEvent& event)
 {
-    return MouseWheelEvent(event.x, event.y, event.direction);
+    return MouseWheelEvent(event.x, event.y);
 }
 
 KeyEvent makeEvent(const SDL_KeyboardEvent& event)
