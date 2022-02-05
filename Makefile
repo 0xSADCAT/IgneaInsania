@@ -1,11 +1,28 @@
+# Executable file name
 EXECUTABLE=ignea_insania
 
-CC=g++
-CFLAGS=-c -Wall -Wextra -O2
-LDFLAGS=
-LIBS=-lSDL2
+# Compiler
+CC=clang
 
-SOURCES=src/application.cpp \
+# Compiler flags
+CFLAGS=\
+	   -c \
+	   -std=c++2a \
+	   -Wall -Wextra \
+	   -O2 -fno-rtti \
+	   -fno-exceptions
+
+# Linker flags
+LDFLAGS=
+
+# Libtaris
+LIBS=\
+	 -lstdc++ \
+	 -lSDL2
+
+# Project source files
+SOURCES=\
+		src/application.cpp \
 		src/application_events_impl.cpp \
 		src/main.cpp \
 		src/game/game.cpp \
@@ -13,6 +30,9 @@ SOURCES=src/application.cpp \
 		src/structs/geometry.cpp \
 		src/ui/window.cpp \
 		src/ui/window_impl.cpp
+
+# Additional include path
+INCLUDE=-I/usr/include/SDL2
 
 OBJECTS=$(SOURCES:.cpp=.o)
 
@@ -22,7 +42,7 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(LDFLAGS) $(OBJECTS) $(LIBS) -o $@
 
 .cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(INCLUDE) $(CFLAGS) $< -o $@
 
 clean:
 	rm $(OBJECTS)
