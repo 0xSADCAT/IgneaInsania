@@ -18,7 +18,8 @@ LDFLAGS=
 # Libtaris
 LIBS=\
 	 -lstdc++ \
-	 -lSDL2
+	 -lSDL2 \
+	 -lSDL2_image
 
 # Project source files
 SOURCES=\
@@ -26,8 +27,11 @@ SOURCES=\
 		src/application_events_impl.cpp \
 		src/main.cpp \
 		src/game/game.cpp \
+		src/game/player.cpp \
 		src/structs/events.cpp \
 		src/structs/geometry.cpp \
+		src/textures/size_manager.cpp \
+		src/textures/texture_manager.cpp \
 		src/ui/window.cpp \
 		src/ui/window_impl.cpp
 
