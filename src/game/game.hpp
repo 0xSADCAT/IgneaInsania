@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "player.hpp"
 #include "../structs/events.hpp"
 
 
@@ -15,5 +15,10 @@ public:
     void onKeyEvent(const KeyEvent& event);
 
     void onTickEvent(int microseconds_elapsed);
+
+    const Player& player() const;
+
+private:
+    Player _player = Player({500, 500}, {0, 0});
 };
 
