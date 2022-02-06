@@ -100,10 +100,16 @@ void Application::tickEvent(int microseconds_elapsed)
     {
         _game->onTickEvent(microseconds_elapsed);
     }
+    else
+    {
+        return;
+    }
 
     if (_window != nullptr)
     {
         _window->clear();
+        _window->drawTexture(_game->player().texture(), _game->player().position(),
+                             _game->player().flip(), _game->player().rotation());
         _window->present();
     }
 }

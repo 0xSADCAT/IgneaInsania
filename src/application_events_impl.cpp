@@ -88,7 +88,10 @@ int ApplicationEventsImpl::execute()
 
             case SDL_KEYDOWN:
             case SDL_KEYUP:
-                iapp->keyEvent(makeEvent(event.key));
+                if (not event.key.repeat)
+                {
+                    iapp->keyEvent(makeEvent(event.key));
+                }
                 break;
 
             default:

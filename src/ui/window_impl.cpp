@@ -3,14 +3,21 @@
 #include <cassert>
 #include <iostream>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 #include "../textures/texture_manager.hpp"
+#include "../textures/size_manager.hpp"
 
 
 namespace
 {
+static constexpr Uint32 window_flags = SDL_WINDOW_SHOWN;
+
 static constexpr Uint32 render_flags = SDL_RENDERER_ACCELERATED |
                                        SDL_RENDERER_PRESENTVSYNC;
+
+static constexpr int window_width = 1920;
+static constexpr int window_height = 1080;
 };
 
 WindowImpl::WindowImpl(const std::string& title)
@@ -22,12 +29,19 @@ WindowImpl::WindowImpl(const std::string& title)
         std::exit(-1);
     }
 
+    if (IMG_Init(IMG_INIT_PNG) == 0)
+    {
+        std::cerr << "Failed to init IMG:" << std::endl
+                  << IMG_GetError() << std::endl;
+        std::exit(-1);
+    }
+
     _window = SDL_CreateWindow(title.c_str(),
                                SDL_WINDOWPOS_CENTERED,
                                SDL_WINDOWPOS_CENTERED,
-                               1920,
-                               1080,
-                               SDL_WINDOW_SHOWN);
+                               window_width,
+                               window_height,
+                               window_flags);
     if (_window == nullptr)
     {
         std::cerr << "Failed to create window:" << std::endl
@@ -44,6 +58,7 @@ WindowImpl::WindowImpl(const std::string& title)
     }
 
     _texture_manager = new TextureManager(_renderer);
+    _size_manager = new SizeManager(window_width, window_height);
 
     SDL_SetRenderDrawColor(_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
     SDL_RenderClear(_renderer);
@@ -52,6 +67,15 @@ WindowImpl::WindowImpl(const std::string& title)
 
 WindowImpl::~WindowImpl()
 {
+    if (_texture_manager != nullptr)
+    {
+        delete _texture_manager;
+    }
+    if (_size_manager != nullptr)
+    {
+        delete _size_manager;
+    }
+
     if (_renderer != nullptr)
     {
         SDL_DestroyRenderer(_renderer);
@@ -79,9 +103,9 @@ void WindowImpl::drawTexture(TextureId id, const Point& position, Flip flip, dou
     assert(texture != nullptr);
 
     SDL_Rect rect;
-#error rect.w and rect.h ???
     rect.x = static_cast<int>(position.x());
     rect.y = static_cast<int>(position.y());
+    rect.w = rect.h = _size_manager->size(id);
 
     if (flip == Flip::None and rotation == 0.0)
     {
@@ -104,6 +128,7 @@ void WindowImpl::drawTexture(TextureId id, const Point& position, Flip flip, dou
             sdl_flip = SDL_FLIP_NONE;
             break;
         }
+
         SDL_RenderCopyEx(_renderer, texture, nullptr, &rect, rotation, nullptr, sdl_flip);
     }
 }
