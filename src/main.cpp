@@ -1,6 +1,6 @@
-#include "application.hpp"
-#include "ui/window.hpp"
-#include "game/game.hpp"
+#include "Application.hpp"
+#include "ui/Window.hpp"
+#include "game/Game.hpp"
 
 
 int main(int argc, char** argv)

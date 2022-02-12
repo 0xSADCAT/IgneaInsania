@@ -3,8 +3,8 @@
 #include <string>
 #include <SDL2/SDL.h>
 
-#include "../structs/geometry.hpp"
-#include "../textures/texture_id.hpp"
+#include "../structs/Geometry.hpp"
+#include "../textures/TextureId.hpp"
 
 
 class TextureManager;

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <ostream>
-#include "buttons.hpp"
+#include "Buttons.hpp"
 
 
 class MouseButtonEvent

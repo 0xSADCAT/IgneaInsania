@@ -1,10 +1,10 @@
-#include "texture_manager.hpp"
+#include "TextureManager.hpp"
 
 #include <iostream>
 #include <cassert>
 #include <SDL2/SDL_image.h>
 
-#include "texture_path.hpp"
+#include "TexturePath.hpp"
 
 
 TextureManager::TextureManager(SDL_Renderer* renderer)

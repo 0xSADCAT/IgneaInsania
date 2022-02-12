@@ -23,17 +23,17 @@ LIBS=\
 
 # Project source files
 SOURCES=\
-		src/application.cpp \
-		src/application_events_impl.cpp \
+		src/Application.cpp \
+		src/ApplicationEventsImpl.cpp \
 		src/main.cpp \
-		src/game/game.cpp \
-		src/game/player.cpp \
-		src/structs/events.cpp \
-		src/structs/geometry.cpp \
-		src/textures/size_manager.cpp \
-		src/textures/texture_manager.cpp \
-		src/ui/window.cpp \
-		src/ui/window_impl.cpp
+		src/game/Game.cpp \
+		src/game/Player.cpp \
+		src/structs/Events.cpp \
+		src/structs/Geometry.cpp \
+		src/textures/SizeManager.cpp \
+		src/textures/TextureManager.cpp \
+		src/ui/Window.cpp \
+		src/ui/WindowImpl.cpp
 
 # Additional include path
 INCLUDE=-I/usr/include/SDL2
@@ -51,3 +51,4 @@ $(EXECUTABLE): $(OBJECTS)
 clean:
 	rm $(OBJECTS)
 	rm $(EXECUTABLE)
+

@@ -1,8 +1,8 @@
-#include "application_events_impl.hpp"
+#include "ApplicationEventsImpl.hpp"
 
 #include <chrono>
 #include <SDL2/SDL.h>
-#include "application.hpp"
+#include "Application.hpp"
 
 
 namespace

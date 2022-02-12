@@ -3,7 +3,7 @@
 #include <vector>
 #include <SDL2/SDL.h>
 
-#include "texture_id.hpp"
+#include "TextureId.hpp"
 
 
 class TextureManager

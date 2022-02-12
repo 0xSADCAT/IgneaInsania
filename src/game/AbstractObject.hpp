@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../textures/texture_id.hpp"
-#include "../structs/geometry.hpp"
+#include "../textures/TextureId.hpp"
+#include "../structs/Geometry.hpp"
 
 
 class AbstractObject

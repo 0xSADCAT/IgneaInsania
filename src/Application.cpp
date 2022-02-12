@@ -1,9 +1,9 @@
-#include "application.hpp"
+#include "Application.hpp"
 
 #include <cassert>
-#include "application_events_impl.hpp"
-#include "ui/window.hpp"
-#include "game/game.hpp"
+#include "ApplicationEventsImpl.hpp"
+#include "ui/Window.hpp"
+#include "game/Game.hpp"
 
 
 namespace

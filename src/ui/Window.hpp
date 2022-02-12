@@ -2,8 +2,8 @@
 
 #include <string>
 
-#include "../structs/geometry.hpp"
-#include "../textures/texture_id.hpp"
+#include "../structs/Geometry.hpp"
+#include "../textures/TextureId.hpp"
 
 
 class WindowImpl;

@@ -1,6 +1,6 @@
-#include "window.hpp"
+#include "Window.hpp"
 
-#include "window_impl.hpp"
+#include "WindowImpl.hpp"
 
 
 Window::Window(const std::string& title)

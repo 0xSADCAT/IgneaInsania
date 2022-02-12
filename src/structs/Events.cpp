@@ -1,5 +1,5 @@
-#include "events.hpp"
-#include "buttons.hpp"
+#include "Events.hpp"
+#include "Buttons.hpp"
 
 
 MouseButtonEvent::MouseButtonEvent(int x, int y, MouseButton button, ButtonState state)

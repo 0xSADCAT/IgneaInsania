@@ -1,4 +1,4 @@
-#include "size_manager.hpp"
+#include "SizeManager.hpp"
 
 #include <cassert>
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "player.hpp"
-#include "../structs/events.hpp"
+#include "Player.hpp"
+#include "../structs/Events.hpp"
 
 
 class Game

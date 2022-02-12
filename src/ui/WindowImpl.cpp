@@ -1,12 +1,12 @@
-#include "window_impl.hpp"
+#include "WindowImpl.hpp"
 
 #include <cassert>
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "../textures/texture_manager.hpp"
-#include "../textures/size_manager.hpp"
+#include "../textures/TextureManager.hpp"
+#include "../textures/SizeManager.hpp"
 
 
 namespace

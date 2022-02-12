@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "structs/events.hpp"
+#include "structs/Events.hpp"
 
 
 #define iapp \
